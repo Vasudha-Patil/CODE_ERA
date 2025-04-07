@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If-Else Problems | CODE ERA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header Styles */
+        #logo-div {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        #logo-div img {
+            height: 60px;
+            width: auto;
+            border-radius: 50%;
+            border: 3px solid var(--light-color);
+        }
+        
+        #logo-div h1 {
+            font-size: 2rem;
+            margin-left: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        /* Navigation Bar */
+        #nav-div {
+            background-color: var(--dark-color);
+            padding: 1rem 0;
+        }
+        
+        #nav-div ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        #nav-div li {
+            margin: 0 1.5rem;
+            position: relative;
+        }
+        
+        #nav-div a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            padding: 0.5rem 0;
+            display: inline-block;
+            font-weight: 500;
+        }
+        
+        #nav-div a:hover {
+            color: var(--secondary-color);
+        }
+        
+        #nav-div li::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s;
+        }
+        
+        #nav-div li:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content Styles */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            flex: 1;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .page-header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-header p {
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+        
+        .problems-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .problems-table thead {
+            background-color: var(--primary-color);
+        }
+        
+        .problems-table th {
+            padding: 1rem;
+            text-align: left;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        
+        .problems-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .problems-table tr {
+            transition: background-color 0.3s;
+        }
+        
+        .problems-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .problems-table tr:hover {
+            background-color: var(--light-color);
+        }
+        
+        .status-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+        
+        .difficulty-easy {
+            color: #2ecc71;
+            font-weight: 600;
+        }
+        
+        .difficulty-medium {
+            color: #f39c12;
+            font-weight: 600;
+        }
+        
+        .difficulty-hard {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        
+        .action-btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .action-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: var(--dark-color);
+            color: var(--text-light);
+            padding: 2rem 0 1rem;
+            margin-top: auto;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column {
+            padding: 0 1rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .contact-info {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .social-media {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-media a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-media a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            #nav-div ul {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            #nav-div li {
+                margin: 0.5rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .problems-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo and Navigation -->
+    <div id="logo-div">
+        <div style="display: flex; align-items: center;">
+            <img src="lg.jpg" alt="CODE ERA Logo">
+            <h1>CODE ERA</h1>
+        </div>
+        <div>
+            <a href="login.html" class="action-btn" style="background: var(--accent-color); margin-right: 1rem;">Login</a>
+            <a href="register.html" class="action-btn">Register</a>
+        </div>
+    </div>
+    
+    <!-- Navigation Bar -->
+    <div id="nav-div">
+        <ul>
+            <li><a href="file:///C:/Users/ADMIN/Desktop/secondyear_project/home.html">Home</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="quiz.html">Quizzes</a></li>
+            <li><a href="https://www.linkedin.com/in/vasudha-patil-b19499231/">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-code-branch"></i> If-Else Problems</h1>
+            <p>Practice conditional logic with these programming challenges</p>
+        </div>
+        
+        <table class="problems-table">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Code</th>
+                    <th>Problem Name</th>
+                    <th>Submissions</th>
+                    <th>Difficulty</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="status-icon" title="Unattempted"></span></td>
+                    <td>GDTURN</td>
+                    <td>Good Turn</td>
+                    <td>0</td>
+                    <td class="difficulty-medium">Medium (238)</td>
+                    <td><a href="if1.html" class="action-btn" target="_blank">Solve</a></td>
+                </tr>
+                <tr>
+                    <td><span class="status-icon" title="Unattempted"></span></td>
+                    <td>TOP10</td>
+                    <td>Masterchef finals</td>
+                    <td>0</td>
+                    <td class="difficulty-medium">Medium (255)</td>
+                    <td><a href="if2.html" class="action-btn" target="_blank">Solve</a></td>
+                </tr>
+                <tr>
+                    <td><span class="status-icon" title="Unattempted"></span></td>
+                    <td>CANDIVIDE</td>
+                    <td>Candy Division</td>
+                    <td>0</td>
+                    <td class="difficulty-hard">Hard (289)</td>
+                    <td><a href="if3.html" class="action-btn" target="_blank">Solve</a></td>
+                </tr>
+                <tr>
+                    <td><span class="status-icon" title="Unattempted"></span></td>
+                    <td>BIRYHLTH</td>
+                    <td>Battery Health</td>
+                    <td>0</td>
+                    <td class="difficulty-hard">Hard (296)</td>
+                    <td><a href="if4.html" class="action-btn" target="_blank">Solve</a></td>
+                </tr>
+                <tr>
+                    <td><span class="status-icon" title="Unattempted"></span></td>
+                    <td>JERRYCHASE</td>
+                    <td>Tom and Jerry Chase</td>
+                    <td>0</td>
+                    <td class="difficulty-hard">Hard (298)</td>
+                    <td><a href="if5.html" class="action-btn" target="_blank">Solve</a></td>
+                </tr>
+                <tr>
+                    <td><span class="status-icon" title="Unattempted"></span></td>
+                    <td>ONEMORE</td>
+                    <td>Just One More Episode</td>
+                    <td>0</td>
+                    <td class="difficulty-hard">Hard (299)</td>
+                    <td><a href="if6.html" class="action-btn" target="_blank">Solve</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <img src="lg.jpg" alt="CODE ERA Logo" style="width: 80px; border-radius: 50%; margin-bottom: 1rem;">
+                <h3>CODE ERA</h3>
+                <p>Learn programming concepts in an interactive and engaging way.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="learn.html">Learn</a></li>
+                    <li><a href="quiz.html">Quizzes</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Creator</h3>
+                <div class="contact-info">
+                    <i class="fas fa-user"></i>
+                    <span>Vasudha Patil</span>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:vasudhavenkatpatil@gmail.com">vasudhavenkatpatil@gmail.com</a>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+917821907824">+91 7821907824</a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Connect With Me</h3>
+                <div class="social-media">
+                    <a href="https://www.linkedin.com/in/vasudha-patil-b19499231/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/vasudha_patil_/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.codechef.com/users/vasudha_48" target="_blank" title="CodeChef"><i class="fas fa-code"></i></a>
+                    <a href="https://github.com/Vasudha48" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 CODE ERA. Created with ❤️ by Vasudha Patil. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

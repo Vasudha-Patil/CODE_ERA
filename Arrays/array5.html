@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counting Pretty Numbers | CODE ERA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/hint/show-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/hint/anyword-hint.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/hint/show-hint.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #5cb85c;
+            --accent-color: #f0ad4e;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-color: #333;
+            --text-light: #fff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), #3a5683);
+            color: var(--text-light);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .question-container {
+            background-color: white;
+            padding: 2rem;
+            margin: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            font-weight: 500;
+        }
+
+        .io-table {
+            width: 45%;
+            margin: 2rem auto;
+            border-collapse: collapse;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .io-table th {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 1rem;
+            font-weight: 500;
+        }
+
+        .io-table td {
+            background-color: var(--light-color);
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .editor-container {
+            background-color: white;
+            padding: 0;
+            margin: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .editor-header {
+            background-color: var(--dark-color);
+            color: var(--text-light);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            padding: 0.5rem 1.25rem;
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background-color: #4cae4c;
+            border-color: #4cae4c;
+        }
+
+        .btn-success {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            padding: 0.5rem 1.25rem;
+            font-weight: 500;
+        }
+
+        .btn-success:hover {
+            background-color: #ec971f;
+            border-color: #ec971f;
+        }
+
+        .form-control, .form-select {
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            padding: 0.5rem 0.75rem;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(74, 111, 165, 0.25);
+        }
+
+        .CodeMirror {
+            height: 500px !important;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <h1><i class="bi bi-123"></i> CODE ERA - Counting Pretty Numbers</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="question-container">
+            <h2>Question</h2>
+            <p><b>Vasya likes the number 239. Therefore, he considers a number pretty if its last digit is 2, 3 or 9. Vasya wants to watch the numbers between L and R (both inclusive), so he asked you to determine how many pretty numbers are in this range. Can you help him?</b></p>
+            
+            <h2>Input Format</h2>
+            <div>
+                <ul>
+                    <li>The first line of input will contain a single integer T, denoting the number of test cases.</li>
+                    <li>The first and only line of each test case contains two space-separated integers L and R.</li>
+                </ul>
+            </div>
+            
+            <h2>Output Format</h2>
+            <div>
+                <p>For each test case, print a single line containing one integer — the number of pretty numbers between L and R.</p>
+            </div>
+        </div>
+
+        <table class="io-table">
+            <tr>
+                <th>Input</th>
+                <th>Output</th>
+            </tr>
+            <tr>
+                <td>
+                    <ul style="list-style-type: none; padding: 0; margin: 0;">
+                        <li>2</li>
+                        <li>1 10</li>
+                        <li>11 33</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul style="list-style-type: none; padding: 0; margin: 0;">
+                        <li>3</li>
+                        <li>8</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <div class="row m-1">
+            <div class="col-lg-8">
+                <div class="editor-container">
+                    <div class="editor-header">
+                        <div class="col-12 col-md-6 col-lg-5">
+                            <select class="form-select" id="inlineFormSelectPref">
+                                <option selected>Choose language...</option>
+                                <option value="Java">Java</option>
+                                <option value="Cpp">C++</option>
+                                <option value="Python">Python</option>
+                                <option value="C">C</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success me-2" id="runBtn">Submit</button>
+                            <button type="button" class="btn btn-primary" id="executeBtn"><i class="bi bi-play-fill"></i> Run</button>
+                        </div>
+                    </div>
+                    <textarea id="editor" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="editor-container h-100">
+                    <div class="mb-4 p-3">
+                        <label class="form-label">Input</label>
+                        <textarea class="form-control" id="inputArea" rows="8" style="height: 200px;">2
+1 10
+11 33</textarea>
+                    </div>
+                    <div class="p-3">
+                        <label class="form-label">Output</label>
+                        <textarea class="form-control" id="outputArea" rows="8" readonly style="height: 200px;"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize CodeMirror editor
+        var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+            mode: "text/x-c++src",
+            theme: "dracula",
+            lineNumbers: true,
+            autoCloseBrackets: true,
+            extraKeys: {
+                "Ctrl-Space": "autocomplete",
+                "Ctrl-Enter": function() { executeCode(); }
+            },
+            indentUnit: 4
+        });
+        
+        // Set editor size
+        editor.setSize("100%", "500");
+        
+        // Language selection handler
+        var option = document.getElementById("inlineFormSelectPref");
+        option.addEventListener("change", function() {
+            if (option.value == "Java") {
+                editor.setOption("mode", "text/x-java");
+            } else if (option.value == "Python") {
+                editor.setOption("mode", "text/x-python");
+            } else if (option.value == "C") {
+                editor.setOption("mode", "text/x-csrc");
+            } else {
+                editor.setOption("mode", "text/x-c++src");
+            }
+        });
+        
+        // Execute button handler
+        document.getElementById("executeBtn").addEventListener("click", executeCode);
+        document.getElementById("runBtn").addEventListener("click", executeCode);
+        
+        function executeCode() {
+            const code = editor.getValue();
+            const input = document.getElementById("inputArea").value;
+            const outputArea = document.getElementById("outputArea");
+            
+            try {
+                const lines = input.split('\n');
+                const T = parseInt(lines[0]);
+                let output = "";
+                
+                for (let i = 1; i <= T; i++) {
+                    const [L, R] = lines[i].trim().split(' ').map(Number);
+                    let count = 0;
+                    
+                    for (let num = L; num <= R; num++) {
+                        const lastDigit = num % 10;
+                        if (lastDigit === 2 || lastDigit === 3 || lastDigit === 9) {
+                            count++;
+                        }
+                    }
+                    
+                    output += count + "\n";
+                }
+                
+                outputArea.value = output.trim();
+            } catch (error) {
+                outputArea.value = "Error: " + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

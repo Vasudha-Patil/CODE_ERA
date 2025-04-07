@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODE ERA - Learn Programming</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        #logo-div {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        #logo-div img {
+            height: 60px;
+            width: auto;
+            border-radius: 50%;
+            border: 3px solid var(--light-color);
+        }
+        
+        #logo-div h1 {
+            font-size: 2rem;
+            margin-left: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        /* Horizontal Navigation Bar */
+        #nav-div {
+            background-color: var(--dark-color);
+            padding: 1rem 0;
+        }
+        
+        #nav-div ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        #nav-div li {
+            margin: 0 1.5rem;
+            position: relative;
+        }
+        
+        #nav-div a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            padding: 0.5rem 0;
+            display: inline-block;
+            font-weight: 500;
+        }
+        
+        #nav-div a:hover {
+            color: var(--secondary-color);
+        }
+        
+        #nav-div li::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s;
+        }
+        
+        #nav-div li:hover::after {
+            width: 100%;
+        }
+        
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        
+        #main-div {
+            display: flex;
+            min-height: calc(100vh - 180px);
+        }
+        
+        #sidebar-div {
+            width: 250px;
+            background-color: var(--light-color);
+            padding: 2rem 1rem;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        
+        #sidebar-div h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        #sidebar-div hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--secondary-color), transparent);
+            margin: 1rem 0;
+        }
+        
+        .side {
+            display: block;
+            padding: 0.8rem 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+            margin: 0.5rem 0;
+        }
+        
+        .side:hover {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            transform: translateX(5px);
+        }
+        
+        #area-div {
+            flex: 1;
+            padding: 2rem;
+            background-color: white;
+        }
+        
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f5f7fa, #e4e8eb);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .welcome-section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .welcome-section p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background: var(--dark-color);
+            color: var(--text-light);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column {
+            padding: 0 1rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .footer-column p {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-column p i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .social-media {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-media a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-media a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 1rem;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0 1.2rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #c0392b;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            #nav-div ul {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            #nav-div li {
+                margin: 0.5rem;
+            }
+            
+            #main-div {
+                flex-direction: column;
+            }
+            
+            #sidebar-div {
+                width: 100%;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body> 
+    <div id="logo-div">
+        <div style="display: flex; align-items: center;">
+            <img src="lg.jpg" class="img">
+            <h1>CODE ERA</h1>
+        </div>
+        <div>
+            <a href="login.html" style="color: white; text-decoration: none; background: var(--accent-color); padding: 0.5rem 1rem; border-radius: 4px; margin-right: 1rem;">Login</a>
+            <a href="register.html" style="color: white; text-decoration: none; background: var(--secondary-color); padding: 0.5rem 1rem; border-radius: 4px;">Register</a>
+        </div>
+    </div>
+    
+    <!-- Horizontal Navigation Bar -->
+    <div id="nav-div">
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="quiz.html">Quizzes</a></li>
+            <li><a href="https://www.linkedin.com/in/vasudha-patil-b19499231/">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <div id="main-div" class="clearfix">
+        <div id="sidebar-div"> 
+            <h2 style="font-size:32px;"><b>Topics</b></h2>
+            <hr>
+            <p class="main">
+                <a class="side" href="Basics/qbasic.html" target="_blank"><i class="fas fa-code"></i> Basic Programming</a><hr>
+                <a class="side" href="IF/qif.html" target="_blank"><i class="fas fa-code-branch"></i> If-Else</a><hr>
+                <a class="side" href="LOOPS/qloop.html" target="_blank"><i class="fas fa-redo"></i> Loops</a><hr>
+                <a class="side" href="Arrays/qarray.html" target="_blank"><i class="fas fa-layer-group"></i> Arrays</a><hr>
+                <a class="side" href="Strings/qtring.html" target="_blank"><i class="fas fa-quote-right"></i> Strings</a><hr>
+            </p>
+        </div>
+        
+        <div id="area-div">
+            <div class="welcome-section">
+                <h2>Welcome to CODE ERA</h2>
+                <p>Your one-stop destination for learning programming concepts in an interactive and engaging way. Whether you're a beginner or looking to refresh your skills, we've got you covered with comprehensive tutorials, examples, and quizzes.</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Interactive Learning</h3>
+                    <p>Learn by doing with our interactive coding examples and exercises that run directly in your browser.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Structured Curriculum</h3>
+                    <p>Follow our carefully designed learning path that takes you from basic concepts to advanced topics.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>Practice Quizzes</h3>
+                    <p>Test your knowledge with our interactive quizzes and get immediate feedback on your progress.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Earn Badges</h3>
+                    <p>Get rewarded for your progress with achievement badges and certificates.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <img src="lg.jpg" style="width: 80px; border-radius: 50%; margin-bottom: 1rem;">
+                <h3>CODE ERA</h3>
+                <p>Learn programming concepts in an interactive and engaging way.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="learn.html">Learn</a></li>
+                    <li><a href="quiz.html">Quizzes</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Creator</h3>
+                <p><i class="fas fa-user"></i> Vasudha Patil</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:vasudhavenkatpatil@gmail.com">vasudhavenkatpatil@gmail.com</a></p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+917821907824">+91 7821907824</a></p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Connect With Me</h3>
+                <div class="social-media">
+                    <a href="https://www.linkedin.com/in/vasudha-patil-b19499231/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/vasudha_patil_/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.codechef.com/users/vasudha_48" target="_blank" title="CodeChef"><i class="fas fa-code"></i></a>
+                    <a href="https://github.com/Vasudha48" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                
+                <div class="newsletter">
+                    <h3>Newsletter</h3>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 CODE ERA. Created with ❤️ by Vasudha Patil. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
