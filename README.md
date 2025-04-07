@@ -1,7 +1,3 @@
-﻿# CODE_ERA
-Here's a comprehensive `README.md` file for your GitHub repository with appropriate emojis:
-
-```markdown
 # CODE ERA - Learn Programming 🚀
 
 ![CODE ERA Logo](lg.jpg)
@@ -18,7 +14,6 @@ CODE ERA is an interactive learning platform designed to make programming concep
 
 ## 📂 Project Structure
 
-```
 CODE-ERA/
 ├── Basics/              # Basic programming concepts
 │   └── qbasic.html
@@ -38,7 +33,6 @@ CODE-ERA/
 ├── register.html        # User registration
 ├── lg.jpg               # Project logo
 └── README.md            # This file
-```
 
 ## 🛠️ Technologies Used
 
@@ -71,7 +65,7 @@ CODE-ERA/
 - 📞 Phone: [+91 7821907824](tel:+917821907824)
 - 🔗 LinkedIn: [Vasudha Patil](https://www.linkedin.com/in/vasudha-patil-b19499231/)
 - 📷 Instagram: [@vasudha_patil_](https://www.instagram.com/vasudha_patil_/)
-- 💻 GitHub: [Vasudha48](https://github.com/Vasudha48)
+- 💻 GitHub: [Vasudha-Patil](https://github.com/Vasudha48)
 
 ## 📜 License
 
@@ -81,15 +75,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Made with ❤️ by [Vasudha Patil](https://github.com/Vasudha48) | © 2023 CODE ERA
 ```
-
-This README includes:
-- Eye-catching emojis for each section
-- Clear project structure
-- Technology stack
-- Getting started instructions
-- Learning resources navigation
-- Contact information with social links
-- License information
 
 You can customize it further by adding:
 - Screenshots of your project
