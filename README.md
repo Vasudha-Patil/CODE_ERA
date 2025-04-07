@@ -56,7 +56,7 @@ CODE-ERA/
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/Vasudha48/CODE-ERA.git](https://github.com/Vasudha-Patil/CODE_ERA)
+   (https://github.com/Vasudha-Patil/CODE_ERA)
    ```
 2. Open the `home.html` file in your preferred browser
 3. Start learning programming concepts!
