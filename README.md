@@ -17,20 +17,31 @@ CODE ERA is an interactive learning platform designed to make programming concep
 CODE-ERA/
 ├── Basics/              # Basic programming concepts
 │   └── qbasic.html
+
 ├── IF/                  # If-Else statements
 │   └── qif.html
+
 ├── LOOPS/               # Loops concepts
 │   └── qloop.html
+
 ├── Arrays/              # Arrays tutorials
 │   └── qarray.html
+
 ├── Strings/             # Strings manipulation
 │   └── qtring.html
+
 ├── home.html            # Home page
+
 ├── learn.html           # Learning portal
+
 ├── quiz.html            # Quizzes section
+
 ├── contact.html         # Contact page
+
 ├── login.html           # User login
+
 ├── register.html        # User registration
+
 ├── lg.jpg               # Project logo
 └── README.md            # This file
 
@@ -69,15 +80,5 @@ CODE-ERA/
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
 Made with ❤️ by [Vasudha Patil](https://github.com/Vasudha48) | © 2023 CODE ERA
-```
 
-You can customize it further by adding:
-- Screenshots of your project
-- Demo GIFs
-- Contribution guidelines
-- Roadmap for future features
